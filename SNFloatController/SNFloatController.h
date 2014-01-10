@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, SNFloatControllerViewControllers)
     SNFloatControllerViewControllersBottom
 };
 
-//FloatView Position
+//FloatView's Position
 typedef NS_ENUM(NSInteger, SNFloatControllerPosition) {
     SNFloatControllerPositionNone,
     SNFloatControllerPositionRightOutScreen,
@@ -24,19 +24,16 @@ typedef NS_ENUM(NSInteger, SNFloatControllerPosition) {
     SNFloatControllerPositionFullScreen
 };
 
-//floating時に、floatViewを操作可能にするか
 typedef NS_ENUM(NSInteger, SNFloatControllerFloatInteractionMode) {
     SNFloatControllerFloatInteractionModeNone,
     SNFloatControllerFloatInteractionModeFull
 };
 
-//floating時に、bottomViewを操作可能にするか
 typedef NS_ENUM(NSInteger, SNFloatControllerBottomInteractionMode) {
     SNFloatControllerBottomInteractionModeNone,
     SNFloatControllerBottomInteractionModeFull
 };
 
-//FloatViewを動かすとき、どの部分で操作可能にするか
 typedef NS_ENUM(NSInteger, SNFloatControllerMoveInteractionMode) {
     SNFloatControllerMoveInteractionModeNone,
     SNFloatControllerMoveInteractionModeCustom,
@@ -44,13 +41,12 @@ typedef NS_ENUM(NSInteger, SNFloatControllerMoveInteractionMode) {
     SNFloatControllerMoveInteractionModeFull
 };
 
-//FloatControllerを引っ張るとき、速度の基準をどうするか
 typedef NS_ENUM(NSInteger, SNFloatControllerMoveInteractionSpeed) {
     SNFloatControllerMoveInteractionSpeedFullScreenAdjust,
     SNFloatControllermoveInteractionSpeedTopViewControllerAdjust
 };
 
-//ブロック
+
 @class SNFloatController;
 typedef void (^SNFLoatControllerMovingStateBlock)(SNFloatController *floatController, SNFloatControllerPosition position, CGFloat percentMoving);
 typedef BOOL (^SNFLoatControllerGestureShouldRecognizeTouchBlock)(SNFloatController *floatController, UIGestureRecognizer * gesture, UITouch * touch);
@@ -106,9 +102,13 @@ typedef void (^SNFLoatControllerGestureCompletionBlock)(SNFloatController *float
 @property (nonatomic, copy) SNFLoatControllerGestureCompletionBlock gestureCompletionBlock;
 
 - (id)initWithFloatViewController:(UIViewController *)floatViewController BottomViewController:(UIViewController *)bottomViewController;
+
 - (void)moveToPosition:(SNFloatControllerPosition)floatPosition animated:(BOOL)animated completion:(void(^)(BOOL finished))completion;
+
 - (void)setCustomMoveInteractionView:(UIView *)customMoveInteractionView;
 - (void)setViewControllerFrame:(SNFloatControllerViewControllers)controller frame:(CGRect)frame animated:(bool)animated;
+
 - (CGRect)frameForPosition:(SNFloatControllerPosition)position;
+
 - (bool)isMovingBetweenPosition:(SNFloatControllerPosition)position1 andPosition:(SNFloatControllerPosition)position2;
 @end

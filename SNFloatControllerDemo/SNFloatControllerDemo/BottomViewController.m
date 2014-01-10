@@ -13,7 +13,7 @@
 
 @interface BottomViewController ()
 @property (nonatomic) NSArray *items;
-@property (nonatomic) NSArray *controlls;
+@property (nonatomic) NSArray *controls;
 @end
 
 @implementation BottomViewController
@@ -43,7 +43,7 @@
                @"Beach",
                @"Galaxy",
                @"Lake"];
-    _controlls = @[
+    _controls = @[
                    @"Top",
                    @"Bar",
                    @"Full",
@@ -71,7 +71,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (section == 0)?_items.count:_controlls.count;
+    return (section == 0)?_items.count:_controls.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,7 +80,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = (indexPath.section == 0)
-    ?_items[indexPath.row]:_controlls[indexPath.row];
+    ?_items[indexPath.row]:_controls[indexPath.row];
     
     return cell;
 }

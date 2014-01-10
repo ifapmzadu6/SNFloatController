@@ -17,7 +17,7 @@ const CGFloat SNFloatControllerPanVelocityXAnimationThreshold = 2000.0f;
 const CGFloat SNFloatControllerPanVelocityYAnimationThreshold = 200.0f;
 
 
-NSTimeInterval const SNFloatControllerMinimumAnimationDuration = 0.15f;
+const NSTimeInterval SNFloatControllerMinimumAnimationDuration = 0.15f;
 
 
 #pragma mark - SNFloatContentContainerView
@@ -68,7 +68,7 @@ NSTimeInterval const SNFloatControllerMinimumAnimationDuration = 0.15f;
     UIView *hitView = [super hitTest:point withEvent:event];
     if(hitView){
         if(self.bottomInteractionMode == SNFloatControllerBottomInteractionModeNone){
-            hitView = nil; //ViewのFloatViewの操作を無効にする
+            hitView = nil;
         }
     }
     return hitView;
